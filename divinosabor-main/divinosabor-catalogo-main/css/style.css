@@ -1,0 +1,1415 @@
+/* ==========================================================================
+   1. IMPORTAÇÃO DE FONTES (Sempre no topo)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab:400,700|Lato:400,700&display=swap');
+
+/* ==========================================================================
+   2. CONFIGURAÇÕES GERAIS E VARIÁVEIS DO SITE
+   ========================================================================== */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --browm: #6a3521;
+  --pink: #f7b0cd;
+  --creme: #f1ead0;
+  --cinza: #ededed;
+  --creme2: #FAF5EF;
+  --marrom: #2B160C;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: #FAF6ED;
+  /* Fundo creme suave da sua imagem */
+  min-height: 100vh;
+}
+
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', serif;
+  color: #2B160C;
+}
+
+a {
+  color: #ce5a5a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #b33939;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+header {
+  width: 100%;
+  height: 500px;
+  background: var(--browm);
+}
+
+.content {
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+nav {
+  width: 100%;
+  height: 125px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.brand img {
+  align-self: left;
+  height: 150px;
+  width: auto;
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav ul li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+nav ul li a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: var(--creme);
+}
+
+nav ul button {
+  border: 1px solid var(--pink);
+  background: transparent;
+  padding: 8px 40px;
+  cursor: pointer;
+  margin-left: 30px;
+  color: var(--creme);
+  font-weight: bold;
+  border-radius: 35px;
+  white-space: nowrap;
+}
+
+nav ul button:hover {
+  transition: background, color 0.6s;
+  background: var(--pink);
+  color: brown;
+}
+
+.content .header-block {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 450px;
+  background: var(--creme);
+  border-radius: 8px;
+  box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  padding: 10px;
+}
+
+.header-block img {
+  width: 50%;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+}
+
+.header-block .text {
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+}
+
+.header-block .text h2 {
+  color: var(--browm);
+  margin-bottom: 20px;
+  text-align: right;
+  transform: translateX(-20px);
+  transition: transform 0.5s;
+}
+
+.header-block .text p {
+  max-width: 280px;
+  color: var(--browm);
+  text-align: right;
+  transform: translateX(-20px);
+  transition: transform 0.4s;
+}
+
+#img-logo {
+  width: 50px;
+}
+
+/* ==========================================================================
+   4. SEÇÃO DO CATÁLOGO E FILTRO
+   ========================================================================== */
+main {
+  flex: 1;
+}
+
+section .catalog {
+  width: 100vw;
+  padding: 60px 20px;
+}
+
+.title-wrapper-catalog {
+  margin-top: 150px;
+  padding-bottom: 20px;
+}
+
+.filter-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  background-color: #FFFFFF;
+  border-radius: 100px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.search-input {
+  flex: 1;
+  height: 58px;
+  border: none;
+  background: transparent;
+  padding: 0 25px;
+  font-size: 1rem;
+}
+
+.search-button {
+  background-color: var(--marrom);
+  color: #FAF5EF;
+  border: none;
+  padding: 0 35px;
+  height: 58px;
+  border-radius: 0 100px 100px 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background-color: var(--pink);
+  color: #ffffff;
+}
+
+/* Models Template (Oculto) */
+.models {
+  display: none;
+}
+
+/* ==========================================================================
+   5. CARDS IGUAIS À SUAS FOTOS (ESTILO EXATO DA IMAGEM)
+   ========================================================================== */
+.cone-area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto 50px auto;
+}
+
+.cone-item {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cone-item a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
+}
+
+/* Bloco colorido superior da foto */
+.cone-item--img,
+.cone-item-img {
+  width: 100%;
+  height: 210px;
+  background-color: #FCE8E6;
+  /* Cor padrão, pode trocar via HTML inline */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.cone-item--img img,
+.cone-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Variações de cores das fotos igual na foto recebida */
+.cone-item:nth-child(1) .cone-item--img {
+  background-color: #FCE8E6;
+}
+
+/* Rosa Claro */
+.cone-item:nth-child(2) .cone-item--img {
+  background-color: #FAD4D8;
+}
+
+/* Rosa */
+.cone-item:nth-child(3) .cone-item--img {
+  background-color: #EBDC9B;
+}
+
+/* Amarelo */
+
+/* Conteúdo interno do card */
+.cone-item-info {
+  padding: 24px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cone-item--name,
+.cone-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2B160C;
+  margin-bottom: 12px;
+}
+
+.cone-item--desc,
+.cone-item-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #6D5B52;
+  line-height: 1.45;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.cone-item--price,
+.cone-item-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2B160C;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Botão "Quero este!" */
+.cone-item--add,
+.cone-item-add {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 10px;
+  background-color: #231209;
+  text-align: center;
+  color: #FFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0;
+  transition: background-color 0.2s ease;
+}
+
+.cone-item a:hover .cone-item--add,
+.cone-item a:hover .cone-item-add {
+  background-color: #422313;
+}
+
+/* ==========================================================================
+   7. MODAL DO PRODUTO (NOVO DESIGN CLEAN & ELEGANTE)
+   ========================================================================== */
+.coneWindowArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 8, 5, 0.65);
+  backdrop-filter: blur(8px);
+  /* Efeito focado e elegante */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.coneWindowBody {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: modalScale 0.25s ease-out;
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Botão Fechar (X) */
+.cone-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #FAF6F0;
+  color: #1A0D08;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.cone-close-btn:hover {
+  background-color: #211109;
+  color: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+/* Foto do Produto */
+.coneBig {
+  width: 100%;
+  height: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #FAF6F0;
+}
+
+.coneBig img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Informações */
+.coneInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cone-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1A0D08;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.coneInfo-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  color: #6E615A;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Rótulos das Seções */
+.coneInfo-sector {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #A39690;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Seleção de Tamanho */
+.cone-option-group {
+  margin-bottom: 24px;
+}
+
+.coneInfo-sizes {
+  display: flex;
+  gap: 10px;
+}
+
+.coneInfo-size {
+  flex: 1;
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border: 1.5px solid #EADBCE;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1A0D08;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coneInfo-size:hover {
+  border-color: #211109;
+}
+
+.coneInfo-size.selected {
+  background: #211109;
+  color: #FFFFFF;
+  border-color: #211109;
+  box-shadow: 0 4px 12px rgba(33, 17, 9, 0.2);
+}
+
+/* Preço e Quantidade lado a lado */
+.cone-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-top: 12px;
+  border-top: 1px solid #F0E8E1;
+}
+
+.coneInfo-actualPrice {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #211109;
+}
+
+/* Seletor de Quantidade */
+.coneInfo-qtarea {
+  display: flex;
+  align-items: center;
+  background: #FAF6F0;
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid #EADBCE;
+}
+
+.coneInfo-qtarea button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #FFFFFF;
+  color: #1A0D08;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.15s;
+}
+
+.coneInfo-qtarea button:hover {
+  background: #211109;
+  color: #FFFFFF;
+}
+
+.coneInfo-qt {
+  font-weight: 600;
+  padding: 0 14px;
+  font-size: 0.95rem;
+}
+
+/* Botão Principal Adicionar */
+.coneInfo-addButton {
+  width: 100%;
+  background-color: #211109;
+  color: #FFFFFF;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(33, 17, 9, 0.15);
+}
+
+.coneInfo-addButton:hover {
+  background-color: #3D2113;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(33, 17, 9, 0.25);
+}
+
+.coneInfo-addButton:active {
+  transform: translateY(0);
+}
+
+/* Ajuste Responsivo */
+@media (max-width: 680px) {
+  .coneWindowBody {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .coneBig {
+    height: 220px;
+  }
+}
+
+/* ==========================================================================
+   6. CARRINHO DE COMPRAS (SIDEBAR ELEGANTE)
+   ========================================================================== */
+aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 380px;
+  height: 100vh;
+  background-color: #FAF6F0;
+  box-shadow: -10px 0 30px rgba(33, 17, 9, 0.15);
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ESTA LINHA É A CHAVE: Fica por cima de absolutamente tudo */
+  z-index: 9999;
+  border-left: 1px solid #EADBCE;
+}
+
+aside.show {
+  right: 0;
+}
+
+.cart-area {
+  padding: 28px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho do Carrinho */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #EADBCE;
+}
+
+.cart-area h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A0D08;
+}
+
+.menu-closer {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid #EADBCE;
+  color: #1A0D08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.menu-closer:hover {
+  background-color: #211109;
+  color: #FFFFFF;
+  border-color: #211109;
+}
+
+/* Lista de Itens */
+.cart {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #FFFFFF;
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #EADBCE;
+  box-shadow: 0 4px 10px rgba(33, 17, 9, 0.03);
+}
+
+.cart-item img {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  background-color: #FAF6F0;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cart-item-nome {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1A0D08;
+  line-height: 1.25;
+}
+
+.cart-item-preco {
+  font-size: 0.8rem;
+  color: #61524B;
+  font-weight: 500;
+}
+
+/* Controles de Quantidade (+ / -) */
+.cart-item-qtarea {
+  display: flex;
+  align-items: center;
+  background: #FAF6F0;
+  border: 1px solid #EADBCE;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.cart-item-qtarea button {
+  border: none;
+  background: #FFFFFF;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #1A0D08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-qtarea button:hover {
+  background-color: #211109;
+  color: #FFFFFF;
+}
+
+.cart-item-qt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0 8px;
+  color: #1A0D08;
+}
+
+/* Resumo de Valores */
+.cart-details {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #EADBCE;
+  background-color: #FAF6F0;
+}
+
+.cart-totalitem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #61524B;
+  margin-bottom: 8px;
+}
+
+.cart-totalitem.big {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1A0D08;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed #EADBCE;
+}
+
+/* Botão Finalizar Compra */
+.cart-finalizar {
+  background-color: #211109;
+  /* Marrom nobre gourmet */
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(33, 17, 9, 0.15);
+}
+
+.cart-finalizar:hover {
+  background-color: #3D2113;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(33, 17, 9, 0.25);
+}
+
+.cart-finalizar:active {
+  transform: translateY(0);
+}
+
+/* Responsivo para celulares */
+@media (max-width: 480px) {
+  aside {
+    width: 100vw;
+  }
+}
+
+/* ==========================================================================
+   8. SEÇÃO SOBRE NÓS E RECURSOS
+   ========================================================================== */
+.about {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px;
+}
+
+.about-content {
+  max-width: 1000px;
+  min-width: 300px;
+  height: 600px;
+  background: var(--creme);
+  margin: 0 auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  width: 25%;
+  min-width: 300px;
+  height: 100%;
+  background: #000000a1;
+  border-radius: 8px;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.right {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10%;
+}
+
+.right h3 {
+  text-align: right;
+  width: 90%;
+  margin-bottom: 20px;
+  margin-top: -30px;
+  
+
+}
+
+.right p {
+  max-width: 90%;
+  font-size: 1em;
+  letter-spacing: 2px;
+  text-align: right;
+  color: var(--marrom);
+}
+
+
+/* ==========================================================================
+   DIFERENCIAIS: CARDS BRANCOS ARREDONDADOS COM FUNDO MARROM
+   ========================================================================== */
+
+/* 1. Seção inteira com o fundo marrom escuro */
+.features {
+  width: 100%;
+  background-color: var(--browm);
+  /* Marrom escuro de fundo */
+  padding: 60px 20px;
+}
+
+/* 2. Título da seção em cima dos cards */
+
+.features h3 {
+  color: #FFFFFF;
+  /* Texto branco para dar contraste com o fundo marrom */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--pink);
+}
+
+/* 3. Grid dos cards (3 colunas no PC) */
+.feature-card-block {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 colunas no PC */
+  gap: 20px;
+  background: transparent;
+  /* Remove a caixa creme interna */
+  padding: 0;
+}
+
+/* 4. Estilo dos cards soltos (Brancos, Arredondados e com Sombra) */
+.feature-card-item {
+  background-color: #FFFFFF;
+  /* Fundo branco do card */
+  border-radius: 16px;
+  /* Borda bem arredondada */
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  /* Sombra suave */
+  height: auto !important;
+}
+
+/* 5. TAMANHO CONTROLADO DOS ÍCONES (Mantém o chocolate no tamanho certo) */
+.feature-card-item img {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 6. Textos dentro dos cards brancos */
+.feature-text-content {
+  flex: 1;
+}
+
+.feature-text-content h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2D1810;
+  /* Título do card em tom marrom escuro */
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.feature-text-content p {
+  font-size: 0.85rem;
+  color: #61524B;
+  /* Texto do corpo legível */
+  line-height: 1.4;
+}
+
+/* 7. Adaptação para Celular */
+@media (max-width: 900px) {
+  .feature-card-block {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 colunas em tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    padding: 40px 15px;
+  }
+
+  .feature-card-block {
+    grid-template-columns: 1fr;
+    /* 1 coluna no celular */
+    gap: 16px;
+  }
+
+  .feature-card-item {
+    padding: 16px;
+  }
+
+  .feature-card-item img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ==========================================================================
+   9. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+  width: 100%;
+  height: 250px;
+}
+
+footer .main {
+  width: 100%;
+  height: 200px;
+  background: var(--marrom);
+  padding: 20px 10px;
+}
+
+.footer-links {
+  max-width: 1000px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.footer-company,
+.footer-rental,
+.footer-contact,
+.footer-social {
+  color: var(--creme);
+  height: 100%;
+  min-height: 100px;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+  color: var(--pink);
+}
+
+.main .footer-social img {
+  width: 32px;
+  height: 32px;
+}
+
+footer .last {
+  width: 100%;
+  height: 50px;
+  background: var(--pink);
+  color: var(--browm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   10. MEDIA QUERIES / RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 1000px) {
+  .cone-area {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 840px) {
+  aside {
+    width: auto;
+    position: fixed;
+    left: 100vw;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all ease .2s;
+  }
+
+  aside.show {
+    width: auto;
+    left: 0;
+  }
+
+  .cart--area,
+  .cart-area {
+    width: 100vw;
+  }
+
+  .menu-closer {
+    display: block;
+  }
+
+  .coneWindowArea {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .coneWindowBody {
+    width: 100vw;
+    display: block;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .coneBig img {
+    width: 75%;
+    height: auto;
+  }
+
+  .coneInfo h1 {
+    margin-top: 20px;
+  }
+
+  .coneInfo--qtarea,
+  .coneInfo-qtarea {
+    height: 60px;
+  }
+
+  .coneInfo--qtarea button,
+  .coneInfo-qtarea button {
+    font-size: 25px;
+    padding: 0px 25px;
+  }
+
+  .coneInfo--qt,
+  .coneInfo-qt {
+    line-height: 60px;
+    font-size: 20px;
+  }
+
+  .coneInfo--addButton,
+  .coneInfo-addButton {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    margin: 30px auto;
+  }
+
+  .coneInfo--cancelButton,
+  .coneInfo-cancelButton {
+    display: none;
+  }
+
+  .coneInfo--cancelMobileButton,
+  .coneInfo-cancelMobileButton {
+    display: block;
+  }
+}
+
+@media (max-width: 620px) {
+  .cone-area {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  nav ul li {
+    display: none;
+  }
+
+  /* Container principal do topo */
+  .header-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    max-width: 100%;
+    /* Garante que respeite o limite da tela */
+    box-sizing: border-box;
+  }
+
+  /* Garante que o card/imagem central encolha sem achatar */
+  .header-block img,
+  .header-block-card {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Mantém a proporção perfeita */
+    flex-shrink: 1;
+    /* Permite que a imagem encolha quando o carrinho abrir */
+  }
+
+  section .filter-card {
+    width: 100%;
+    max-width: 390px;
+    height: auto;
+    padding: 15px 10px;
+    flex-direction: column;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 50px;
+  }
+
+  .search-button {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 50px;
+  }
+
+  .about {
+    margin-top: 100px;
+    
+  }
+
+  .title-wrapper-about {
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    width: 90%;
+  }
+
+  .right p {
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+  }
+
+  .features {
+    height: 100%;
+  }
+
+  .feature-card-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    height: 100%;
+  }
+
+  footer .main {
+    height: 100%;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    padding-left: 10%;
+  }
+}
+
+@media (max-width: 450px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .menu-openner {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  .menu-openner {
+    font-size: 1.5rem;
+  }
+}
+
+/* Fundo escuro para destacar o carrinho */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(33, 17, 9, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 9998;
+  /* Fica logo abaixo do carrinho */
+  display: none;
+}
+
+.cart-overlay.show {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .hero-card {
+    padding: 20px 15px;
+    width: 92%;
+  }
+
+  .hero-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-card img {
+    max-height: 180px;
+  }
+
+  .feature-card-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Ajuste exclusivo para telas menores (celular) */
+@media (max-width: 768px) {
+
+  /* 1. Transforma o card em uma coluna vertical */
+  .header-block-card,
+  .hero-card,
+  .header-block {
+    display: flex !important;
+    flex-direction: column !important;
+    /* Empilha os elementos */
+    align-items: center !important;
+    text-align: center !important;
+    padding: 30px 20px !important;
+  }
+
+  /* 2. Força o texto a vir primeiro */
+  .header-block-card h2,
+  .header-block-card p,
+  .hero-card h2,
+  .hero-card p {
+    order: 1 !important;
+    /* Garante que o texto fica no topo */
+    position: relative !important;
+    z-index: 2;
+  }
+
+  /* 3. Força a imagem do cone a vir depois (embaixo) */
+  .header-block-card img,
+  .hero-card img {
+    order: 2 !important;
+    /* Move o cone para baixo do texto */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin-top: 20px !important;
+    /* Distância entre o texto e o cone */
+    max-width: 80% !important;
+    /* Tamanho proporcional para celular */
+    height: auto !important;
+  }
+}
+
+/* Estilização do ícone do carrinho no menu */
+.menu-openner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-openner:hover {
+  transform: scale(1.05);
+}
+
+/* Tamanho da imagem do carrinho */
+.menu-openner img {
+  width: 28px;
+  /* Ajuste a largura da imagem se preferir maior ou menor */
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Estilo do número/contador de itens */
+.menu-openner span {
+  background-color: var(--pink);
+  color: var(--marrom);
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}

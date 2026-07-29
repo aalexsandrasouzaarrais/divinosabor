@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divino Sabor - Cones Trufados Gourmet</title>
+    <!-- Importação das fontes do Google Fonts (Playfair Display e Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/casca.png">
+</head>
+
+<body>
+
+    <!-- MODELOS PARA CLONAGEM VIA JAVASCRIPT -->
+    <div class="models" style="display: none;">
+        <!-- Card do Cone no Catálogo -->
+        <div class="cone-item">
+            <a href="">
+                <!-- Imagem no topo -->
+                <div class="cone-item-img">
+                    <img src="" alt="" />
+                </div>
+
+                <!-- Conteúdo textual e Ação (abaixo da imagem) -->
+                <div class="cone-item-info">
+                    <div class="cone-item-name">--</div>
+                    <div class="cone-item-desc">--</div>
+                    <div class="cone-item-price">R$ --</div>
+                    <div class="cone-item-add">Quero este!</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Item no Carrinho -->
+        <div class="cart-item">
+            <img src="" alt="" />
+            <div class="cart-item-nome">--</div>
+            <div class="cart-item-qtarea">
+                <button class="cart-item-qtmenos">-</button>
+                <div class="cart-item-qt">1</div>
+                <button class="cart-item-qtmais">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER / CABEÇALHO -->
+    <header>
+        <div class="content">
+            <nav>
+                <a href="#" class="brand">
+                    <img src="img/logo.png" alt="Logo Divino Sabor">
+                </a>
+                <ul>
+                    <li><a href="#catalog">Catálogo</a></li>
+                    <li><a href="#about">Sobre nós</a></li>
+                    <li><a href="#features">Sobre o produto</a></li>
+                    <!-- Adicionada a tag <li> ao redor do carrinho -->
+                    <li>
+                        <div class="menu-openner">
+                            <img src="img/carrinho.png" alt="Carrinho" />
+                            <span>0</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-block">
+                <div class="text">
+                    <h2>Adoce seu dia.</h2>
+                    <p>
+                        Confira nossos cones e escolha o seu sabor favorito. Temos uma variedade de sabores para você se
+                        deliciar.
+                    </p>
+                </div>
+                <img src="img/cone.png" alt="Cone Trufado Divino Sabor" />
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <section class="catalog" id="catalog">
+            <div class="content">
+                <div class="title-wrapper-catalog">
+                    <h2>Catálogo</h2>
+                </div>
+                <div class="filter-card">
+                    <input type="text" class="search-input" placeholder="Escolha seu sabor favorito" />
+                    <button class="search-button">Buscar</button>
+                </div>
+
+                <!-- ÁREA ONDE OS CONES SERÃO INJETADOS PELO JS -->
+                <div class="cone-area"></div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="content">
+                <div class="title-wrapper-about">
+                    <h2>Sobre Nós</h2>
+                </div>
+                <div class="about-content">
+                    <div class="left">
+                        <img src="img/logoo.png" alt="História da Divino Sabor" />
+                    </div>
+                    <div class="right">
+                        <h3>Conheça um pouco mais sobre a Divino Sabor</h3>
+                        <p>
+                            Nascida da paixão pela confeitaria artesanal e pelo desejo de transformar pequenos momentos
+                            em
+                            instantes inesquecíveis, a Divino Sabor é especialista em criar os cones trufados mais
+                            surpreendentes que você já provou.
+                            <br><br>
+                            Nossa missão é simples, mas poderosa: elevar o clássico cone recheado ao nível gourmet. Por
+                            isso, cada um de nossos cones é produzido de forma 100% artesanal, combinando a crocância
+                            perfeita da
+                            casquinha com recheios incrivelmente cremosos e ingredientes rigorosamente selecionados.
+                            <br><br>
+                            Seja para celebrar uma data especial, presentear quem você ama ou simplesmente se dar aquele
+                            mimo merecido no meio da tarde, a Divino Sabor está aqui para garantir que cada mordida seja
+                            uma
+                            verdadera celebração de sabor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="content">
+                <div class="title-wrapper-features">
+                    <h2>Por que escolher a Divino Sabor?</h2>
+                    <h3>Nossos Diferenciais</h3>
+                </div>
+                <div class="feature-card-block">
+                    <div class="feature-card-item">
+                        <img src="img/chocolate.png" alt="Chocolate Nobre" />
+                        <div class="feature-text-content">
+                            <h3>Chocolate Nobre</h3>
+                            <p>Trabalhamos apenas com chocolate puro e de alta qualidade. Nada de cobertura fracionada!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-card-item">
+                        <img src="img/casca.png" alt="Casquinha Blindada" />
+                        <div class="feature-text-content">
+                            <h3>Casquinha Blindada</h3>
+                            <p>Uma camada generosa de chocolate por dentro que garante crocância absoluta a cada
+                                mordida.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card-item">
+                        <img src="img/artesanal.png" alt="100% Artesanal" />
+                        <div class="feature-text-content">
+                            <h3>100% Artesanal</h3>
+                            <p>Cada cone é montado, recheado e decorado manualmente com todo o carinho do mundo.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card-item">
+                        <img src="img/iconmorango.png" alt="Ingredientes Frescos" />
+                        <div class="feature-text-content">
+                            <h3>Ingredientes Frescos</h3>
+                            <p>Uvas e morangos selecionados direto do produtor para garantir o azedinho perfeito da
+                                fruta.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card-item">
+                        <img src="img/fue.png" alt="Sempre Fresquinho" />
+                        <div class="feature-text-content">
+                            <h3>Sempre Fresquinho</h3>
+                            <p>Nossa produção é diária e sob encomenda, garantindo um produto fresco e impecável.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card-item">
+                        <img src="img/presente.png" alt="Perfeito para Presente" />
+                        <div class="feature-text-content">
+                            <h3>Feito para Presentear</h3>
+                            <p>Nossos cones possuem tags e embalagens lindas, prontos para adoçar o dia de alguém
+                                especial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SIDEBAR DO CARRINHO -->
+    <aside>
+        <div class="cart-area">
+            <div class="menu-closer">❌</div>
+            <h1>Seus Cones</h1>
+            <div class="cart"></div>
+            <div class="cart-details">
+                <div class="cart-totalitem subtotal">
+                    <span>Subtotal</span>
+                    <span>R$ --</span>
+                </div>
+                <div class="cart-totalitem desconto">
+                    <span>Desconto</span>
+                    <span>R$ --</span>
+                </div>
+                <div class="cart-totalitem total big">
+                    <span>Total</span>
+                    <span>R$ --</span>
+                </div>
+            </div>
+            <div class="cart-finalizar">Finalizar a compra</div>
+        </div>
+    </aside>
+
+    <!-- JANELA MODAL DO CONE -->
+    <div class="coneWindowArea">
+        <div class="coneWindowBody">
+            <!-- Botão Fechar (X) no topo -->
+            <button class="cone-close-btn" aria-label="Fechar">✕</button>
+
+            <div class="coneBig">
+                <img src="" alt="" />
+            </div>
+
+            <div class="coneInfo">
+                <h1 class="cone-title">--</h1>
+                <p class="coneInfo-desc">--</p>
+
+                <!-- Opções de Tamanho -->
+                <div class="cone-option-group">
+                    <span class="coneInfo-sector">Tamanho</span>
+                    <div class="coneInfo-sizes">
+                        <div data-key="M" class="coneInfo-size"><span>--</span></div>
+                        <div data-key="G" class="coneInfo-size"><span>--</span></div>
+                    </div>
+                </div>
+
+                <!-- Preço e Quantidade -->
+                <div class="cone-price-row">
+                    <div class="price-wrapper">
+                        <span class="coneInfo-sector">Valor</span>
+                        <div class="coneInfo-actualPrice">R$ --</div>
+                    </div>
+
+                    <div class="coneInfo-qtarea">
+                        <button class="coneInfo-qtmenos">-</button>
+                        <div class="coneInfo-qt">1</div>
+                        <button class="coneInfo-qtmais">+</button>
+                    </div>
+                </div>
+
+                <!-- Botão de Ação -->
+                <button class="coneInfo-addButton">
+                    <span>Adicionar ao Carrinho</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="main">
+            <div class="content footer-links">
+                <div class="footer-company">
+                    <h4>Empresa</h4>
+                    <p><a href="#about">Sobre Nós</a></p>
+                    <p><a href="#footer-contact">Contato</a></p>
+                </div>
+                <div class="footer-rental">
+                    <h4>Menu</h4>
+                    <p><a href="#catalog">Cones Trufados</a></p>
+                    <p><a href="#footer-contact">Encomendas</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Conecte-se conosco</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
+                        <a href="#" target="_blank"><img src="img/facebook.png" alt="Facebook" /></a>
+                    </div>
+                </div>
+                <div class="footer-contact" id="footer-contact">
+                    <h4>Contato</h4>
+                    <p>+55 41 99999-9999</p>
+                    <p>divinosabor@gmail.com.br</p>
+                    <p>Rua tal tal 000 , Colombo PR</p>
+                </div>
+            </div>
+        </div>
+        <div class="last">Divino Sabor 2026 - Todos os direitos reservados</div>
+    </footer>
+
+    <script src="js/cone.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
