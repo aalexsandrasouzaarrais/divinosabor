@@ -75,7 +75,7 @@
                 <div class="text">
                     <h2>Adoce seu dia.</h2>
                     <p>
-                        Confira nossos cones e escolha o seu sabor favorito. Temos uma variedade de sabores para você se
+                        Confira nossos cones e doces e escolha o seu sabor favorito. Temos uma variedade de sabores para você se
                         deliciar.
                     </p>
                 </div>
@@ -93,10 +93,24 @@
                 </div>
                 <div class="filter-card">
                     <input type="text" class="search-input" placeholder="Escolha seu sabor favorito" />
-                    <button class="search-button">Buscar</button>
+                    <button class="search-button">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <span>Buscar</span>
+                    </button>
                 </div>
 
-                <!-- ÁREA ONDE OS CONES SERÃO INJETADOS PELO JS -->
+                <!-- CATEGORIAS -->
+                <div class="catalog-categories">
+                    <button class="category-btn active" data-category="all">Todos</button>
+                    <button class="category-btn" data-category="cone">Cones Trufados</button>
+                    <button class="category-btn" data-category="bolo">Bolos de Pote</button>
+                    <button class="category-btn" data-category="docinho">Docinhos & Personalizados</button>
+                </div>
+
+                <!-- ÁREA ONDE OS ITENS SERÃO INJETADOS PELO JS -->
                 <div class="cone-area"></div>
             </div>
         </section>
@@ -160,7 +174,7 @@
                         <img src="img/artesanal.png" alt="100% Artesanal" />
                         <div class="feature-text-content">
                             <h3>100% Artesanal</h3>
-                            <p>Cada cone é montado, recheado e decorado manualmente com todo o carinho do mundo.</p>
+                            <p>Cada cone e doce é montado, recheado e decorado manualmente com todo o carinho do mundo.</p>
                         </div>
                     </div>
                     <div class="feature-card-item">
@@ -182,7 +196,7 @@
                         <img src="img/presente.png" alt="Perfeito para Presente" />
                         <div class="feature-text-content">
                             <h3>Feito para Presentear</h3>
-                            <p>Nossos cones possuem tags e embalagens lindas, prontos para adoçar o dia de alguém
+                            <p>Nossos cones e doces possuem tags e embalagens lindas, prontos para adoçar o dia de alguém
                                 especial.</p>
                         </div>
                     </div>
@@ -194,8 +208,10 @@
     <!-- SIDEBAR DO CARRINHO -->
     <aside>
         <div class="cart-area">
-            <div class="menu-closer">❌</div>
-            <h1>Seus Cones</h1>
+            <div class="cart-header">
+                <h1>Seu Carrinho</h1>
+                <div class="menu-closer" aria-label="Fechar carrinho">✕</div>
+            </div>
             <div class="cart"></div>
             <div class="cart-details">
                 <div class="cart-totalitem subtotal">
@@ -231,10 +247,19 @@
 
                 <!-- Opções de Tamanho -->
                 <div class="cone-option-group">
-                    <span class="coneInfo-sector">Tamanho</span>
+                    <span class="coneInfo-sector">Tamanho / Quantidade</span>
                     <div class="coneInfo-sizes">
                         <div data-key="M" class="coneInfo-size"><span>--</span></div>
                         <div data-key="G" class="coneInfo-size"><span>--</span></div>
+                    </div>
+                </div>
+
+                <!-- Aviso e campo de Personalização (Docinhos Sob Encomenda) -->
+                <div class="custom-order-notice" style="display: none;">
+                    <div class="encomenda-alert-tag"> Item Artesanal Feito Sob Encomenda</div>
+                    <div class="custom-input-group">
+                        <label for="custom-order-notes">Personalização (Tema, Iniciais, Cores):</label>
+                        <input type="text" id="custom-order-notes" placeholder="Ex: Tema Hello Kitty, Iniciais M e R, etc." />
                     </div>
                 </div>
 
