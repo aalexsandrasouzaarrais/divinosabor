@@ -202,38 +202,78 @@ section .catalog {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 650px;
+  height: 56px;
   margin: 0 auto 50px auto;
   background-color: #FFFFFF;
   border-radius: 100px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.03);
+  padding: 4px 5px 4px 22px;
+  border: 1.5px solid rgba(106, 53, 33, 0.12);
+  box-shadow: 0px 4px 18px rgba(43, 22, 12, 0.08);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.filter-card:focus-within {
+  border-color: var(--pink);
+  box-shadow: 0px 6px 22px rgba(106, 53, 33, 0.14);
 }
 
 .search-input {
   flex: 1;
-  height: 58px;
+  height: 100%;
   border: none;
   background: transparent;
-  padding: 0 25px;
-  font-size: 1rem;
+  padding: 0 15px 0 0;
+  font-size: 0.95rem;
+  color: var(--marrom);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #9c8980;
+  font-size: 0.92rem;
 }
 
 .search-button {
-  background-color: var(--marrom);
+  background: linear-gradient(135deg, #6a3521 0%, #462013 100%);
   color: #FAF5EF;
   border: none;
-  padding: 0 35px;
-  height: 58px;
-  border-radius: 0 100px 100px 0;
-  font-weight: 500;
+  padding: 0 28px;
+  height: 46px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(106, 53, 33, 0.25);
+  flex-shrink: 0;
+}
+
+.search-button svg {
+  transition: transform 0.25s ease;
 }
 
 .search-button:hover {
-  background-color: var(--pink);
-  color: #ffffff;
+  background: linear-gradient(135deg, #f7b0cd 0%, #e28fae 100%);
+  color: #462013;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(247, 176, 205, 0.45);
+}
+
+.search-button:hover svg {
+  transform: scale(1.1);
+}
+
+.search-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(106, 53, 33, 0.25);
 }
 
 /* Models Template (Oculto) */
@@ -242,8 +282,47 @@ section .catalog {
 }
 
 /* ==========================================================================
-   5. CARDS IGUAIS À SUAS FOTOS (ESTILO EXATO DA IMAGEM)
+   5. FILTROS POR CATEGORIA E CARDS DO CATÁLOGO
    ========================================================================== */
+.catalog-categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 35px auto;
+  flex-wrap: wrap;
+  padding: 0 16px;
+}
+
+.category-btn {
+  background-color: #FFFFFF;
+  color: #462013;
+  border: 1.5px solid #E8D9C8;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(70, 32, 19, 0.05);
+}
+
+.category-btn:hover {
+  border-color: #F7B0CD;
+  color: #462013;
+  background-color: #FAF2EE;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(70, 32, 19, 0.12);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, #462013 0%, #2A120B 100%);
+  color: #FAF5EF;
+  border-color: #462013;
+  box-shadow: 0 4px 14px rgba(42, 18, 11, 0.25);
+}
+
 .cone-area {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -278,13 +357,13 @@ section .catalog {
   width: 100%;
   height: 210px;
   background-color: #FCE8E6;
-  /* Cor padrão, pode trocar via HTML inline */
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .cone-item--img img,
@@ -292,24 +371,178 @@ section .catalog {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* Variações de cores das fotos igual na foto recebida */
-.cone-item:nth-child(1) .cone-item--img {
-  background-color: #FCE8E6;
+/* Imagens dos Bolos de Pote nos cards - Enquadramento grande e destacado */
+.cone-item[data-category="bolo"] .cone-item--img,
+.cone-item[data-category="bolo"] .cone-item-img {
+  padding: 4px;
 }
 
-/* Rosa Claro */
-.cone-item:nth-child(2) .cone-item--img {
-  background-color: #FAD4D8;
+.cone-item[data-category="bolo"] .cone-item--img img,
+.cone-item[data-category="bolo"] .cone-item-img img {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Rosa */
-.cone-item:nth-child(3) .cone-item--img {
-  background-color: #EBDC9B;
+.cone-item[data-category="bolo"]:hover .cone-item-img img {
+  transform: scale(1.08);
 }
 
-/* Amarelo */
+/* Cards e Imagens dos Docinhos (Sob Encomenda) */
+.cone-item[data-category="docinho"] .cone-item-img,
+.cone-item[data-category="docinho"] .cone-item--img {
+  position: relative;
+  overflow: hidden;
+}
+
+.cone-item[data-category="docinho"] .cone-item-img img,
+.cone-item[data-category="docinho"] .cone-item--img img {
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.cone-item[data-category="docinho"]:hover .cone-item-img img {
+  transform: scale(1.06);
+}
+
+/* Badge Sob Encomenda nos Cards */
+.badge-encomenda {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(43, 22, 12, 0.88);
+  color: #FAF5EF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.3px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Preço Sob Consulta nos Cards e Modal */
+.price-sob-consulta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6A3521;
+  background-color: #FFF5EC;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px dashed #E2B79A;
+  display: inline-block;
+  letter-spacing: 0.2px;
+}
+
+.price-sob-consulta-modal {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #6A3521;
+  letter-spacing: 0.2px;
+}
+
+/* Aviso e Campo de Personalização no Modal */
+.custom-order-notice {
+  margin: 15px 0 10px 0;
+  padding: 14px 16px;
+  background-color: #FFF8F3;
+  border: 1.5px dashed #E2B79A;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.encomenda-alert-tag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6A3521;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-input-group label {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #462013;
+  margin-bottom: 6px;
+}
+
+.custom-input-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #E8D9C8;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  color: #2B160C;
+  background-color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.custom-input-group input:focus {
+  border-color: #6A3521;
+  box-shadow: 0 0 0 3px rgba(106, 53, 33, 0.12);
+}
+
+/* Modal quando for Bolo de Pote */
+.coneWindowArea[data-category="bolo"] .coneBig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coneWindowArea[data-category="bolo"] .coneBig img {
+  width: 90% !important;
+  height: 90% !important;
+  object-fit: contain !important;
+  padding: 4px !important;
+}
+
+/* Variações de cores alternadas para o fundo das fotos */
+.cone-item:nth-child(6n+1) .cone-item-img,
+.cone-item:nth-child(6n+1) .cone-item--img {
+  background-color: #FCE8E6; /* Rosa Suave */
+}
+
+.cone-item:nth-child(6n+2) .cone-item-img,
+.cone-item:nth-child(6n+2) .cone-item--img {
+  background-color: #FFF0DF; /* Creme Baunilha */
+}
+
+.cone-item:nth-child(6n+3) .cone-item-img,
+.cone-item:nth-child(6n+3) .cone-item--img {
+  background-color: #FAD4D8; /* Rosa Bebê Doce */
+}
+
+.cone-item:nth-child(6n+4) .cone-item-img,
+.cone-item:nth-child(6n+4) .cone-item--img {
+  background-color: #E8F2E6; /* Pistache Suave */
+}
+
+.cone-item:nth-child(6n+5) .cone-item-img,
+.cone-item:nth-child(6n+5) .cone-item--img {
+  background-color: #EBDC9B; /* Amarelo Manteiga */
+}
+
+.cone-item:nth-child(6n) .cone-item-img,
+.cone-item:nth-child(6n) .cone-item--img {
+  background-color: #FFEAE0; /* Pêssego Delicado */
+}
 
 /* Conteúdo interno do card */
 .cone-item-info {
@@ -606,17 +839,86 @@ section .catalog {
   transform: translateY(0);
 }
 
-/* Ajuste Responsivo */
-@media (max-width: 680px) {
+/* Ajuste Responsivo - Modal Full Screen no Mobile */
+@media (max-width: 768px) {
+  .coneWindowArea {
+    padding: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: #FFFFFF !important;
+    backdrop-filter: none !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    z-index: 10000 !important;
+  }
+
   .coneWindowBody {
-    grid-template-columns: 1fr;
-    padding: 24px;
-    max-height: 90vh;
-    overflow-y: auto;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 20px 20px 30px 20px !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    background: #FFFFFF !important;
+    animation: none !important;
+  }
+
+  .cone-close-btn {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
+    color: #1A0D08 !important;
+    font-size: 1.1rem !important;
+    z-index: 50 !important;
+    cursor: pointer !important;
   }
 
   .coneBig {
-    height: 220px;
+    width: 100% !important;
+    height: 260px !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+  }
+
+  .coneBig img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .coneInfo {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .coneInfo-addButton {
+    margin-top: 15px !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
   }
 }
 
@@ -667,19 +969,25 @@ aside.show {
 }
 
 .menu-closer {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
   border-radius: 50%;
   background-color: #FFFFFF;
-  border: 1px solid #EADBCE;
+  border: 1.5px solid #EADBCE;
   color: #1A0D08;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1 !important;
+  padding: 0 !important;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  user-select: none;
 }
 
 .menu-closer:hover {
@@ -862,18 +1170,24 @@ aside.show {
 }
 
 .left {
-  width: 25%;
-  min-width: 300px;
-  height: 100%;
-  background: #000000a1;
-  border-radius: 8px;
+  width: 35%;
+  min-width: 260px;
+  max-width: 340px;
+  height: auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
 }
 
 .left img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .right {
@@ -1107,66 +1421,12 @@ footer .last {
   }
 
   .menu-closer {
-    display: block;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
-  .coneWindowArea {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
 
-  .coneWindowBody {
-    width: 100vw;
-    display: block;
-    padding: 20px;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0;
-  }
-
-  .coneBig img {
-    width: 75%;
-    height: auto;
-  }
-
-  .coneInfo h1 {
-    margin-top: 20px;
-  }
-
-  .coneInfo--qtarea,
-  .coneInfo-qtarea {
-    height: 60px;
-  }
-
-  .coneInfo--qtarea button,
-  .coneInfo-qtarea button {
-    font-size: 25px;
-    padding: 0px 25px;
-  }
-
-  .coneInfo--qt,
-  .coneInfo-qt {
-    line-height: 60px;
-    font-size: 20px;
-  }
-
-  .coneInfo--addButton,
-  .coneInfo-addButton {
-    font-size: 20px;
-    display: block;
-    text-align: center;
-    margin: 30px auto;
-  }
-
-  .coneInfo--cancelButton,
-  .coneInfo-cancelButton {
-    display: none;
-  }
-
-  .coneInfo--cancelMobileButton,
-  .coneInfo-cancelMobileButton {
-    display: block;
-  }
 }
 
 @media (max-width: 620px) {
@@ -1175,37 +1435,95 @@ footer .last {
     max-width: 320px;
   }
 
-  nav ul li {
-    display: none;
+  header {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 25px !important;
+  }
+
+  .content {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 10px 15px 0 15px !important;
+  }
+
+  nav {
+    height: auto !important;
+    min-height: 125px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 10px 0 5px 0 !important;
+  }
+
+  nav ul {
+    display: none !important;
+  }
+
+  .brand {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .brand img {
+    margin: 0 auto !important;
+    align-self: center !important;
+    height: 125px !important;
+    width: auto !important;
   }
 
   /* ==========================================================================
-     CORREÇÃO DO TOPO BUGADO NO CELULAR (HERO)
+     CORREÇÃO DO TOPO NO CELULAR (HERO COMPACTO)
      ========================================================================== */
   .content .header-block {
     height: auto !important;
     min-height: auto !important;
-    padding: 30px 20px !important;
+    padding: 25px 20px 0 20px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
-    position: relative;
-    box-sizing: border-box;
+    justify-content: flex-start !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+    overflow: hidden !important;
   }
 
   .header-block .text {
+    order: 1 !important;
     position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
     width: 100% !important;
+    max-width: 100% !important;
     text-align: center !important;
-    margin-bottom: 20px !important;
+    margin: 0 auto 10px auto !important;
+    padding: 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   .header-block .text h2 {
     text-align: center !important;
     transform: none !important;
-    font-size: 1.8rem !important;
-    margin-bottom: 12px !important;
+    font-size: 1.7rem !important;
+    margin: 0 auto 10px auto !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
   }
 
   .header-block .text p {
@@ -1214,41 +1532,110 @@ footer .last {
     transform: none !important;
     font-size: 0.95rem !important;
     line-height: 1.5 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
   }
 
   .header-block img {
+    order: 2 !important;
     position: static !important;
-    width: 100% !important;
-    max-width: 220px !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 88% !important;
+    max-width: 290px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 10px auto 0 auto !important;
+    margin-bottom: 0 !important;
     display: block !important;
-    object-fit: contain;
+    vertical-align: bottom !important;
+    object-fit: contain !important;
+  }
+
+  .title-wrapper-catalog {
+    margin-top: 30px !important;
+    padding-bottom: 20px;
+  }
+
+  .catalog-categories {
+    gap: 8px !important;
+    margin-bottom: 25px !important;
+    padding: 0 10px !important;
+  }
+
+  .category-btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
   }
 
   /* ==========================================================================
      CORREÇÃO DA SEÇÃO SOBRE NÓS (EXIBIR IMAGEM NO CELULAR)
      ========================================================================== */
-  section .filter-card {
-    width: 100%;
-    max-width: 390px;
-    height: auto;
-    padding: 15px 10px;
-    flex-direction: column;
+  section .filter-card,
+  .filter-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 52px !important;
+    padding: 4px 5px 4px 18px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background-color: #FFFFFF !important;
+    border-radius: 50px !important;
+    border: 1.5px solid rgba(106, 53, 33, 0.15) !important;
+    box-shadow: 0 4px 14px rgba(43, 22, 12, 0.08) !important;
+    box-sizing: border-box !important;
+    margin: 0 auto 30px auto !important;
   }
 
   .search-input {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    border-radius: 50px;
+    flex: 1 !important;
+    width: auto !important;
+    height: 100% !important;
+    padding: 0 10px 0 0 !important;
+    border: none !important;
+    background: transparent !important;
+    font-size: 0.92rem !important;
+    color: var(--marrom) !important;
+    outline: none !important;
+    border-radius: 0 !important;
   }
 
   .search-button {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    border-radius: 50px;
+    width: auto !important;
+    height: 42px !important;
+    padding: 0 18px !important;
+    border-radius: 50px !important;
+    background: linear-gradient(135deg, #6a3521 0%, #462013 100%) !important;
+    color: #FAF5EF !important;
+    border: none !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-shadow: 0 3px 8px rgba(106, 53, 33, 0.28) !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .search-button:hover {
+    background: linear-gradient(135deg, #f7b0cd 0%, #e28fae 100%) !important;
+    color: #462013 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 5px 12px rgba(247, 176, 205, 0.4) !important;
+  }
+
+  .search-button:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 5px rgba(106, 53, 33, 0.2) !important;
   }
 
   .about {
@@ -1261,45 +1648,69 @@ footer .last {
   }
 
   .about-content {
-    flex-direction: column;
-    height: auto;
-    padding: 20px 15px;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+    padding: 30px 20px !important;
+    text-align: center !important;
   }
 
-  /* Imagem do Sobre Nós voltando a aparecer e ficando centralizada */
+  /* Imagem do Sobre Nós 100% visível, sem cortes e centralizada */
   .left {
-    display: block !important;
-    width: 100%;
-    min-width: 0;
-    max-width: 260px;
-    height: 300px;
-    margin: 0 auto 20px auto;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 240px !important;
+    height: auto !important;
+    margin: 0 auto 25px auto !important;
+    background: transparent !important;
   }
 
   .left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 100% !important;
+    max-width: 240px !important;
+    height: auto !important;
+    max-height: 420px !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    display: block !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
   }
 
   .right {
-    width: 100%;
-    height: auto;
-    padding-top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   .right h3 {
-    text-align: center;
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 15px;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 16px auto !important;
+    font-size: 1.4rem !important;
+    line-height: 1.35 !important;
   }
 
   .right p {
-    width: 100%;
-    margin: 0px;
-    text-align: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    letter-spacing: normal !important;
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
   }
 
   .features {
@@ -1387,42 +1798,221 @@ footer .last {
 /* Ajuste exclusivo para telas menores (celular) */
 @media (max-width: 768px) {
 
-  /* 1. Transforma o card em uma coluna vertical */
+  /* Cabeçalho responsivo */
+  header {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 25px !important;
+  }
+
+  .content {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 10px 15px 0 15px !important;
+  }
+
+  /* Centralização da logo no cabeçalho */
+  nav {
+    height: auto !important;
+    min-height: 125px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 10px 0 5px 0 !important;
+  }
+
+  nav ul {
+    display: none !important;
+  }
+
+  .brand {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .brand img {
+    margin: 0 auto !important;
+    align-self: center !important;
+    height: 250px !important;
+    width: auto !important;
+  }
+
+  /* Card Creme mais compacto */
   .header-block-card,
   .hero-card,
+  .content .header-block,
   .header-block {
     display: flex !important;
     flex-direction: column !important;
-    /* Empilha os elementos */
     align-items: center !important;
+    justify-content: flex-start !important;
     text-align: center !important;
-    padding: 30px 20px !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+    padding: 25px 20px 0 20px !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
-  /* 2. Força o texto a vir primeiro */
-  .header-block-card h2,
-  .header-block-card p,
-  .hero-card h2,
-  .hero-card p {
+  /* Texto 100% centralizado e sem deslocamentos */
+  .header-block .text,
+  .header-block-card .text,
+  .hero-card .text {
     order: 1 !important;
-    /* Garante que o texto fica no topo */
-    position: relative !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto 10px auto !important;
+    padding: 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     z-index: 2;
   }
 
-  /* 3. Força a imagem do cone a vir depois (embaixo) */
+  .header-block .text h2,
+  .header-block-card h2,
+  .hero-card h2 {
+    text-align: center !important;
+    transform: none !important;
+    font-size: 1.7rem !important;
+    margin: 0 auto 10px auto !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .header-block .text p,
+  .header-block-card p,
+  .hero-card p {
+    max-width: 100% !important;
+    text-align: center !important;
+    transform: none !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  /* Imagem do cone saindo da borda inferior */
   .header-block-card img,
-  .hero-card img {
+  .hero-card img,
+  .header-block img {
     order: 2 !important;
-    /* Move o cone para baixo do texto */
-    position: relative !important;
+    position: static !important;
     top: auto !important;
     left: auto !important;
-    margin-top: 20px !important;
-    /* Distância entre o texto e o cone */
-    max-width: 80% !important;
-    /* Tamanho proporcional para celular */
+    right: auto !important;
+    bottom: auto !important;
+    margin: 10px auto 0 auto !important;
+    margin-bottom: 0 !important;
+    width: 88% !important;
+    max-width: 290px !important;
     height: auto !important;
+    display: block !important;
+    vertical-align: bottom !important;
+    object-fit: contain !important;
+  }
+
+  .title-wrapper-catalog {
+    margin-top: 30px !important;
+    padding-bottom: 20px;
+  }
+
+  .catalog-categories {
+    gap: 8px !important;
+    margin-bottom: 25px !important;
+    padding: 0 10px !important;
+  }
+
+  .category-btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Seção Sobre Nós 100% centralizada */
+  .about-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+    padding: 30px 20px !important;
+    text-align: center !important;
+  }
+
+  .left {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 240px !important;
+    height: auto !important;
+    margin: 0 auto 25px auto !important;
+    background: transparent !important;
+  }
+
+  .left img {
+    width: 100% !important;
+    max-width: 240px !important;
+    height: auto !important;
+    max-height: 420px !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    display: block !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .right {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .right h3 {
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 16px auto !important;
+    font-size: 1.4rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .right p {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    letter-spacing: normal !important;
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
   }
 }
 
